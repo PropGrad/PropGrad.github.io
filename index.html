@@ -243,26 +243,33 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </div>
   </section>
 
-  <!--
+  
   <section class="section">
     <div class="container is-max-widescreen">
       <div class="columns is-centered has-text-centered">
         <div class="column">
           <div class="content">
-            <h2 class="title is-3">Quantitative Comparison</h2>
+            <h2 class="title is-3">Why do we need interventions?</h2>
             <p class="content has-text-justified">
-              To empirically compare FastCAV with SVM-based computation, we evaluate a broad spectrum of model architectures trained on <a href="https://arxiv.org/abs/1409.0575">ImageNet</a>.
-              We split our investigation into four dimensions: computational time, accuracy, inter-method similarity, and intra-method robustness.
+              Causal insights can be hierarchically ordered in the so-called causal ladder.
+              This ladder, formally <a href="https://causalai.net/r60.pdf">Pearl's Causal Hierarchy (PCH)</a>, contains three distinct levels: associational, interventional, and counterfactual (see <a href="https://causalai.net/r60.pdf">here</a> for a formal definition).
             </p>
-            <img src="./static/images/table.png" class="interpolation-image" alt="Interpolation end reference image." width="1000" />
+              <ul>
+              <li>The first level, associational, is characterized by correlations observed in a given system.<br> 
+              It focuses on statistical patterns and relationships within the data.</li>
+              <li>The second level, interventional, involves actively changing variables within the system to study the resulting effects. 
+              This is formally represented using the <a href="https://www.cambridge.org/core/books/causality/B0046844FAE10CBF274D4ACBDAEB5F5B"><italic>do</italic>-operator</a>, which allows researchers to examine the causal impact of interventions.</li>
+              <li>The third level, counterfactual, deals with hypothetical scenarios, where researchers consider the potential outcome if an intervention had been made, given specific observations.</li>
+              </ul>
             <p class="content has-text-justified">
-              Comparing our approach FastCAV with SVM-based computation. <b>Bold values</b> indicate better results.
-              "N/A" indicates that no results were produced due to the overall computational time exceeding four days. 
-              More details can be found in our paper!
+              Crucially, the <a href="https://causalai.net/r60.pdf">causal hierarchy theorem</a> states that the three levels are distinct, and the PCH almost never collapses in the general case.
+              Hence, to answer questions of a certain PCH level, data from the corresponding level is needed (Corollary 1 in <a href="https://causalai.net/r60.pdf">here</a>).
             </p>
           </div>
         </div>
   </section>
+
+  <!--
 
   <section class="section">
     <div class="container is-max-widescreen">

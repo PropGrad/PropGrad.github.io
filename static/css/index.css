@@ -13,6 +13,13 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+ul {
+    width: 80%; /* Reduces width to half of the container */
+    display: table;
+    margin: 0px auto;
+    text-align: left;
+}
+
 
 .footer .icon-link {
     font-size: 25px;
