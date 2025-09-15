@@ -149,10 +149,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
               <h1 class="title is-1 publication-title"><b>Locally Explaining Prediction Behavior <br>via Gradual Interventions and <br>Measuring Property Gradients</b></h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=s9bfMqEAAAAJ&hl=en">Niklas Penzel<sup><small>1</small></sup></a>,
+                <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.com/citations?user=s9bfMqEAAAAJ&hl=en">Niklas Penzel<sup><small>1</small></sup></a>,
               </span>
               <span class="author-block">
-                <a href="https://scholar.google.de/citations?hl=en&user=bhpi3vgAAAAJ&hl=en">Joachim Denzler<sup><small>1</small></sup></a>,
+                <a target="_blank" rel="noopener noreferrer" href="https://scholar.google.de/citations?hl=en&user=bhpi3vgAAAAJ&hl=en">Joachim Denzler<sup><small>1</small></sup></a>,
               </span>
             </div>
             <div class="is-size-5 publication-authors">
@@ -171,7 +171,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
               <div class="publication-links">
                 <!-- PDF Link. -->
                 <span class="link-block">
-                  <a href="todo" class="external-link button is-normal is-rounded is-dark">
+                  <a target="_blank" rel="noopener noreferrer" href="todo" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-globe"></i>
                     </span>
@@ -179,7 +179,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2503.05424" class="external-link button is-normal is-rounded is-dark">
+                  <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2503.05424" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
@@ -188,7 +188,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                 </span>
                 <!-- Experiment Code Link. -->
                 <span class="link-block">
-                  <a href="https://github.com/PropGrad/Interventional-XAI" class="external-link button is-normal is-rounded is-dark">
+                  <a target="_blank" rel="noopener noreferrer" href="https://github.com/PropGrad/Interventional-XAI" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
                     </span>
@@ -246,6 +246,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
   <section class="section">
     <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <!-- Visual Effects. -->
+        <div class="column has-text-centered">
+          <div class="content">
+            <p><strong>Important:</strong> We first include some results and highlights. You can find a overview for the theoretical foundation further down or simply open <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2503.05424">our paper</a> &#128519;</p>
+            <hr>
+            <h2 class="title is-2 fullwidth-highlight">Selected Results and Visualizations</h2>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <!-- Visual Effects. -->
+        <div class="column has-text-centered">
+          <div class="content">
+            <hr>
+            <h2 class="title is-2 fullwidth-highlight">Theoretical Background and Preliminaries</h2>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered has-text-centered">
         <div class="column">
           <div class="content">
@@ -279,19 +309,45 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <h2 class="title is-3">Why Do We Need Interventions?</h2>
             <p class="content has-text-justified">
               Causal insights can be hierarchically ordered in the so-called causal ladder.
-              This ladder, formally <a href="https://causalai.net/r60.pdf">Pearl's Causal Hierarchy (PCH)</a>, contains three distinct levels: associational, interventional, and counterfactual (see <a href="https://causalai.net/r60.pdf">here</a> for a formal definition).
+              This ladder, formally <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">Pearl's Causal Hierarchy (PCH)</a>, contains three distinct levels: associational, interventional, and counterfactual (see <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">here</a> for a formal definition).
             </p>
               <ul>
               <li>The first level, associational, is characterized by correlations observed in a given system.<br> 
               It focuses on statistical patterns and relationships within the data.</li>
               <li>The second level, interventional, involves actively changing variables within the system to study the resulting effects. 
-              This is formally represented using the <a href="https://www.cambridge.org/core/books/causality/B0046844FAE10CBF274D4ACBDAEB5F5B"><italic>do</italic>-operator</a>, which allows researchers to examine the causal impact of interventions.</li>
+              This is formally represented using the <a target="_blank" rel="noopener noreferrer" href="https://www.cambridge.org/core/books/causality/B0046844FAE10CBF274D4ACBDAEB5F5B"><italic>do</italic>-operator</a>, which allows researchers to examine the causal impact of interventions.</li>
               <li>The third level, counterfactual, deals with hypothetical scenarios, where researchers consider the potential outcome if an intervention had been made, given specific observations.</li>
               </ul>
             <p class="content has-text-justified">
-              Crucially, the <a href="https://causalai.net/r60.pdf">causal hierarchy theorem</a> states that the three levels are distinct, and the PCH almost never collapses in the general case.
-              Hence, to answer questions of a certain PCH level, data from the corresponding level is needed (Corollary 1 in <a href="https://causalai.net/r60.pdf">here</a>).
+              Crucially, the <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">causal hierarchy theorem</a> states that the three levels are distinct, and the PCH almost never collapses in the general case.
+              Hence, to answer questions of a certain PCH level, data from the corresponding level is needed (Corollary 1 in <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">here</a>).
             </p>
+          </div>
+        </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Generating Interventional Data</h2>
+            <p class="content has-text-justified">
+              To study neural network prediction behavior on the interventional level, we have to generate interventional data with respect to selected properties.
+              To achieve this, we propose three different strategies:
+            </p>
+              <ol>
+              <li>If possible and/or feasible, we recommend capturing new interventional data. This enables users to fully control all factors and limits confounding artifacts.</li>
+              <li>In cases where capturing new data is not feasible, we suggest using existing datasets and applying data augmentation techniques to create variations that reflect the desired interventions. 
+                This approach enables domain experts to target specific properties of interest while saving the costs of re-collection.</li>
+              <li>Finally, we can leverage recent image-to-image editing models, e.g., <a target="_blank" rel="noopener noreferrer" href="https://www.timothybrooks.com/instruct-pix2pix/">InstructPix2Pix</a>, <a target="_blank" rel="noopener noreferrer" href="https://mllm-ie.github.io/">MGIE</a>, or <a target="_blank" rel="noopener noreferrer" href="https://huggingface.co/spaces/leditsplusplus/project">LEDITS++</a>,  to synthetically generate interventional data by modifying specific properties of interest in the images.
+                Further, we can perform gradual interventions by continuously varying the strength of the applied edits, e.g., by using <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2207.12598">classifier free guidance scaling</a>.
+                These gradual interventions allow us to measure the sensitivity of a model's predictions to changes in specific properties, providing insights into the local prediction behavior.
+              </li>
+              </ol>
+
+              <h2 class="title is-3">Measuring Local Property Impact</h2>
           </div>
         </div>
   </section>
@@ -334,7 +390,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
           <div class="content">
             <p>
               This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-              The source code of this site is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">here</a>.
+              The source code of this site is borrowed from <a target="_blank" rel="noopener noreferrer" href="https://github.com/nerfies/nerfies.github.io">here</a>.
               We thank its creators for their work. 
             </p>
             <br><a rel="license" href="impressum_privacy.html">Impressum and Data privacy</a>.
