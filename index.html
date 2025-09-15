@@ -243,13 +243,40 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </div>
   </section>
 
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Structural Causal Model for Property Dependence</h2>
+            <img src="./static/images/scm.png" class="interpolation-image" alt="Teaser Figure" width="1000" height="1000" />
+            </div>
+          </div>
+
+          <div class="column">
+          <div class="content">
+            <p class="content has-text-justified">
+              We consider a structural causal model (SCM) that describes the causal relationships between inputs, specifically, captured properties of interest X, and a model's predictions Ŷ (see Figure).
+              The properties X are high-level, human-understandable features contained in images, such as object shape, color, or texture.
+              The SCM captures the causal dependencies between these variables, allowing us to reason about how changes in one variable affect others.
+              Dashed connections potentially exist depending on the specific task/property combination, and the sampled training data.
+              In particular, we are interested in understanding how interventions on the properties X influence a model's predictions Ŷ (<strong style="color:red">red dashed link</strong>).
+              Given that Ŷ is fully determined by the models, we can gain insights into the model behavior by performing targeted interventions on selected properties of interest X.
+            </p>
+          </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
   
   <section class="section">
     <div class="container is-max-widescreen">
       <div class="columns is-centered has-text-centered">
         <div class="column">
           <div class="content">
-            <h2 class="title is-3">Why do we need interventions?</h2>
+            <h2 class="title is-3">Why Do We Need Interventions?</h2>
             <p class="content has-text-justified">
               Causal insights can be hierarchically ordered in the so-called causal ladder.
               This ladder, formally <a href="https://causalai.net/r60.pdf">Pearl's Causal Hierarchy (PCH)</a>, contains three distinct levels: associational, interventional, and counterfactual (see <a href="https://causalai.net/r60.pdf">here</a> for a formal definition).
@@ -269,64 +296,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         </div>
   </section>
 
-  <!--
-
-  <section class="section">
-    <div class="container is-max-widescreen">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <div class="content">
-            <h2 class="title is-3">Qualitative Comparison</h2>
-            <p class="content has-text-justified">
-              FastCAV can act as a more efficient drop-in replacement for downstream applications of CAVs. 
-              Examples include Testing with Concept Activation Vectors <a href="https://arxiv.org/abs/1711.11279">(TCAV)</a> or Automatic Concept-based Explanations <a href="https://arxiv.org/abs/1902.03129">(ACE)</a>.
-            </p>
-
-            <h3 class="title is-4">Testing for Class Relevant Concepts with TCAV </h3>
-            <img src="./static/images/tcav.png" class="interpolation-image" alt="Interpolation end reference image." width="1000" />
-            <p class="content has-text-justified">
-              TCAV scores for various <a href="https://arxiv.org/abs/1409.4842">GoogleNet</a> layers.
-              We compare the concepts "polka-dotted", "striped", and "zigzagged" for the class <i>ladybug</i> using FastCAV against the established SVM approach.
-              We mark CAVs that are not statistically significant with "*".
-              The insights into the GoogleNet model are consistent between both our approach and the SVM-based method.
-              Nevertheless, we observe <strong>lower standard deviations</strong> and <strong>faster computation speed</strong> for FastCAV.
-            </p>
-
-            <h3 class="title is-4">Automatic Concept Discovery with ACE </h3>
-            <img src="./static/images/ace.png" class="interpolation-image" alt="Interpolation end reference image." width="600" />
-            <p class="content has-text-justified">
-              Comparison of the most salient concepts discovered by ACE using either our FastCAV or the established SVM-CAV. 
-              Here, we use class <i>lionfish</i> and display the two most salient concepts. 
-              We find the discovered patches between both approaches <b>similar and congruent with the original observation</b> in <a href="https://arxiv.org/abs/1902.03129">(Ghorbani et al., 2019)</a>.
-            </p>
-          </div>
-        </div>
-  </section>
-
-
-  <section class="section">
-    <div class="container is-max-widescreen">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <div class="content">
-            <h2 class="title is-3">Tracking CAVs During Training Using FastCAV</h2>
-            <p class="content has-text-justified">
-              FastCAV enables previously infeasible analyses for models with high dimensional activation spaces. 
-              To show this, we train a <a href="https://arxiv.org/abs/1512.03385">ResNet50</a> on <a href="https://arxiv.org/abs/1409.0575">ImageNet</a> from scratch and track the evolution of learned concepts during training.  
-            </p>
-            <img src="./static/images/training-ana.png" class="interpolation-image" alt="Interpolation end reference image." width="1000" />
-            <p class="content has-text-justified">
-              We find the learning of concepts aligns with a simultaneous increase in predictive performance, suggesting that the model is learning to recognize and utilize relevant information for predictions.
-              We observe similar trends for specific concept examples, although the results exhibit increased variability across the training steps compared to the average across concepts.
-              Notably, we observe stark increases in average CAV accuracy after each epoch, where the learning rate is reduced during training.
-            </p>
-            <p class="content has-text-justified">
-              Furthermore, we observe that early and middle layers have a higher likelihood of learning textures compared to later layers, supporting previous findings (<a href="https://arxiv.org/abs/1711.11279">Kim et al., 2018</a>; <a href="https://arxiv.org/abs/1902.03129">Ghorbani et al., 2019</a>; <a href="https://arxiv.org/abs/1704.05796">Bau et al., 2017</a>). 
-              Our observations demonstrate that FastCAV can be used to study the learning dynamics of deep neural networks in a more fine-grained manner and for abstract concepts.
-            </p>
-          </div>
-        </div>
-  </section> -->
+  
   
 
   <section class="section" id="BibTeX">
