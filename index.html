@@ -8,7 +8,7 @@
   <meta name="description" content="Locally Explaining Prediction Behavior via Gradual Interventions and Measuring Property Gradients">
   <meta name="keywords" content="Property Gradients, Interventions, Causality-based Explanations, XAI, Explainability">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Locally Explaining Prediction Behavior via Gradual Interventions and Measuring Property Gradients</title>
+  <title>Measuring Property Gradients</title>
 
   <link rel="icon" href="static/images/favicon.ico" type="image/x-icon">
 
@@ -337,7 +337,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
               To study neural network prediction behavior on the interventional level, we have to generate interventional data with respect to selected properties.
               To achieve this, we propose three different strategies:
             </p>
-              <ol>
+            <ol>
               <li>If possible and/or feasible, we recommend capturing new interventional data. This enables users to fully control all factors and limits confounding artifacts.</li>
               <li>In cases where capturing new data is not feasible, we suggest using existing datasets and applying data augmentation techniques to create variations that reflect the desired interventions. 
                 This approach enables domain experts to target specific properties of interest while saving the costs of re-collection.</li>
@@ -345,9 +345,44 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
                 Further, we can perform gradual interventions by continuously varying the strength of the applied edits, e.g., by using <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2207.12598">classifier free guidance scaling</a>.
                 These gradual interventions allow us to measure the sensitivity of a model's predictions to changes in specific properties, providing insights into the local prediction behavior.
               </li>
-              </ol>
+            </ol>
 
-              <h2 class="title is-3">Measuring a Property's Local Impact</h2>
+            <h2 class="title is-3">Measuring a Property's Local Impact</h2>
+            <p class="content has-text-justified">
+              To measure the changes induced in the network outputs for interventions in property X of a given input image, we approximate the magnitude of the corresponding gradient. 
+              Gradients as a measure of change or impact with respect to X are related to the <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1907.07165">causal concept effect</a> and can be seen as an extension for gradual interventions.
+              Specifically, we define the <strong>expected property gradient magnitude</strong> as follows:
+            </p>
+            <img src="./static/images/expropgrad.png" class="interpolation-image" alt="Expected Property Gradient Magnitude" width="450" height="450" />
+            <p class="content has-text-justified">
+              where we refer the reader to <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2503.05424">our paper</a> for further details.
+              In practice, we approximate the expected value by sampling a set of N gradual interventions on property X for a given input image and compute the average absolute gradient magnitude using <a target="_blank" rel="noopener noreferrer" href="https://www.colorado.edu/amath/sites/default/files/attached-files/mathcomp_88_fd_formulas.pdf">finite differences</a>.
+            </p>
+          </div>
+        </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <p class="content has-text-justified">
+              <strong>Crucially, a high effect size does not imply significance.</strong> 
+              Hence, to determine significance, we perform shuffle hypothesis testing.
+              This approach compares a test statistic from the original observations to K randomly shuffled versions.
+              Here, the interventional values of the property X and the corresponding model outputs for the intervened inputs constitute the original correspondence.
+              We use our expected property gradient magnitude as test statistic, which connects our measure of behavior changes to the hypothesis test.
+              Permuting the observations destroys the systematic relationship between the property X and the model outputs and facilitates approximating the null hypothesis.
+              In our experiments, we use a significance level of 0.01 and perform 10K permutations.
+              See the following example visualizations for random noise and a sinusoidal signal:
+            </p>
+            <img src="./static/images/shuffle-ex.png" class="interpolation-image" alt="Shuffle Hypothesis Test Examples" width="600" height="600" />
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <img src="./static/images/hyptest.png" class="interpolation-image" alt="Pseudo Code" width="540" height="540" />
           </div>
         </div>
   </section>
