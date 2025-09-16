@@ -261,6 +261,51 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
   <section class="section">
     <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Validation in a Cats versus Dogs Classification Task With Known Bias</h2>
+            <p class="content has-text-justified">
+              We validate our approach in a synthetic scenario with known biases.
+              Specifically, we train models on modified version of the <a target="_blank" rel="noopener noreferrer" href="https://www.kaggle.com/competitions/dogs-vs-cats">Cats vs. Dogs dataset</a>, where we introduce a spurious correlation between the class label and the animals fur color.
+              In particular, we obtain three training and test data splits: the original unbiased split, a split with only dark-furred dogs and light-furred cats, and the reverse. 
+              Our results demonstrate that our method can effectively identify the biased property (fur color) as significant for all three models, while correctly recognizing other properties (e.g., background brightness) as unimportant (see teaser figure above).
+              Further, <strong>we can quantify the impact of the property on model predictions</strong> (below left), confirming the ability of our approach to detect locally present biases in model predictions.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-4">Our Approach to Quantify Impact</h2>
+            <img src="./static/images/cvd-propgrad-table.png" class="interpolation-image" alt="Teaser Figure" width="1000" height="1000" />
+            </div>
+          </div>
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-4"><a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1602.04938">LIME</a> as a Local Attribution Baseline</h2>
+            <img src="./static/images/lime-examples.png" class="interpolation-image" alt="Teaser Figure" width="1000" height="1000" />
+            </div>
+          </div>
+        </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <p class="content has-text-justified">
+              Crucially, while other local attribution methods highlight important areas, they require semantic interpretation.
+              For example, although the <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1602.04938">LIME</a> explanations above align with fur color for biased models, the distinction from the unbiased model is unclear.
+              <strong>A focus on interventions</strong>, i.e., the disparity between the top and bottom rows above left, can help interpret the results.
+              You can find more comparisons and additional baselines in <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2503.05424">our paper</a>.
+            </p>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
       <div class="columns is-centered">
         <!-- Visual Effects. -->
         <div class="column has-text-centered">
@@ -280,7 +325,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         <div class="column">
           <div class="content">
             <h2 class="title is-3">Structural Causal Model for Property Dependence</h2>
-            <img src="./static/images/scm.png" class="interpolation-image" alt="Teaser Figure" width="1000" height="1000" />
+            <img src="./static/images/scm.png" class="interpolation-image" alt="Structural Causal Model" width="1000" height="1000" />
             </div>
           </div>
 
