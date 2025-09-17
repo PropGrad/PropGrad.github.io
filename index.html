@@ -366,9 +366,30 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
           <div class="content">
             <hr>
             <h2 class="title is-2 fullwidth-highlight">Theoretical Background and Preliminaries</h2>
+            <h2 class="title is-3">Why Do We Need Interventions?</h2>
+            <p class="content has-text-justified">
+              Causal insights can be hierarchically ordered in the so-called causal ladder.
+              This ladder, formally <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">Pearl's Causal Hierarchy (PCH)</a>, contains three distinct levels: associational, interventional, and counterfactual (see <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">here</a> for a formal definition).
+            </p>
+              <ul>
+              <li>The first level, associational, is characterized by correlations observed in a given system.<br> 
+              It focuses on statistical patterns and relationships within the data.</li>
+              <li>The second level, interventional, involves actively changing variables within the system to study the resulting effects. 
+              This is formally represented using the <a target="_blank" rel="noopener noreferrer" href="https://www.cambridge.org/core/books/causality/B0046844FAE10CBF274D4ACBDAEB5F5B"><italic>do</italic>-operator</a>, which allows researchers to examine the causal impact of interventions.</li>
+              <li>The third level, counterfactual, deals with hypothetical scenarios, where researchers consider the potential outcome if an intervention had been made, given specific observations.</li>
+              </ul>
+            <p class="content has-text-justified">
+              Crucially, the <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">causal hierarchy theorem</a> states that the three levels are distinct, and the PCH almost never collapses in the general case.
+              Hence, to answer questions of a certain PCH level, data from the corresponding level is needed (Corollary 1 in <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">here</a>).
+            </p>
+
+            <div>&ensp;</div>
+            <div>&ensp;</div>
+          </div>
         </div>
-        </div>
+
       </div>
+
       <div class="columns is-centered has-text-centered">
         <div class="column">
           <div class="content">
@@ -391,32 +412,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
           </div>
         </div>
     </div>
-  </section>
-
-  
-  <section class="section">
-    <div class="container is-max-widescreen">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <div class="content">
-            <h2 class="title is-3">Why Do We Need Interventions?</h2>
-            <p class="content has-text-justified">
-              Causal insights can be hierarchically ordered in the so-called causal ladder.
-              This ladder, formally <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">Pearl's Causal Hierarchy (PCH)</a>, contains three distinct levels: associational, interventional, and counterfactual (see <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">here</a> for a formal definition).
-            </p>
-              <ul>
-              <li>The first level, associational, is characterized by correlations observed in a given system.<br> 
-              It focuses on statistical patterns and relationships within the data.</li>
-              <li>The second level, interventional, involves actively changing variables within the system to study the resulting effects. 
-              This is formally represented using the <a target="_blank" rel="noopener noreferrer" href="https://www.cambridge.org/core/books/causality/B0046844FAE10CBF274D4ACBDAEB5F5B"><italic>do</italic>-operator</a>, which allows researchers to examine the causal impact of interventions.</li>
-              <li>The third level, counterfactual, deals with hypothetical scenarios, where researchers consider the potential outcome if an intervention had been made, given specific observations.</li>
-              </ul>
-            <p class="content has-text-justified">
-              Crucially, the <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">causal hierarchy theorem</a> states that the three levels are distinct, and the PCH almost never collapses in the general case.
-              Hence, to answer questions of a certain PCH level, data from the corresponding level is needed (Corollary 1 in <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">here</a>).
-            </p>
-          </div>
-        </div>
   </section>
 
 
