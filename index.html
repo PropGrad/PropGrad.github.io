@@ -119,7 +119,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </div>
     <div class="navbar-menu">
       <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-        <a class="navbar-item" href="https://inf-cv.uni-jena.de/home/staff/">
+        <a class="navbar-item" target="_blank" rel="noopener noreferrer" href="https://inf-cv.uni-jena.de/home/staff/">
           <span class="cvg-logo"></span>
         </a>
         <div class="navbar-item has-dropdown is-hoverable">
@@ -127,14 +127,14 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             More Research
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://causalrivers.github.io/">
+            <a class="navbar-item" target="_blank" rel="noopener noreferrer" href="https://causalrivers.github.io/">
               ICLR 2025 - CausalRivers: Scaling up Benchmarking of Causal Discovery
             </a>
-            <a class="navbar-item" href="https://eifer-mam.github.io/">
+            <a class="navbar-item" target="_blank" rel="noopener noreferrer" href="https://eifer-mam.github.io/">
               CVPR 2025 - EIFER: Electromyography-Informed Facial Expression Reconstruction
             </a>
-            <a class="navbar-item" href="https://fastcav.github.io/">
-              ICML 2025 - FastCAV: Efficient Computation of Concept Activation Vectors 
+            <a class="navbar-item" target="_blank" rel="noopener noreferrer" href="https://fastcav.github.io/">
+              ICML 2025 - FastCAV: Efficient Computation of Concept Activation Vectors
             </a>
           </div>
         </div>
@@ -350,13 +350,127 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <p class="content has-text-justified">
               Our results show that <strong>our approach outperforms all local baselines</strong> in both the synthetically biased cats versus dogs dataset and the realistic skin lesion task.
               However, our aim is not to replace saliency methods, but rather to offer <strong>a complementary, interventional viewpoint for analyzing local behavior.</strong>
-              We demonstrate these capabilities with our analysis of model training and CLIP models.
+              We demonstrate these capabilities with our analysis of neural network training and <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2103.00020">CLIP</a> models.
             </p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Analyzing Neural Network Training Dynamics</h2>
+            <p class="content has-text-justified">
+            In this section, we analyze the training dynamics of neural networks using our proposed interventional framework.
+            Specifically, we investigate <strong>how the sensitivity of a model to a selected property evolves during training.</strong>
+            We select a range of convolutional and transformer-based architectures widely used in computer vision tasks. 
+            For all of these models, we train a randomly initialized and an ImageNet pre-trained version for 100 epochs.
+            </p>
+            <p class="content has-text-justified">
+            Regarding the corresponding task, we construct a binary classification problem from <a target="_blank" rel="noopener noreferrer" href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA</a>, following an idea proposed in <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2403.09683">here</a>.
+            Specifically, we utilize the attribute young as a label and split the data in a balanced manner.
+            For this label, the gray hair property is negatively correlated, and a well-performing classifier should learn this association during the training process.
+            To study the training dynamics, <strong>we intervene on the hair color and calculate expected property gradient magnitudes after each epoch.</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <img src="./static/images/training-ana-corr.png" class="interpolation-image" alt="Teaser Figure" width="1200" height="1000" />
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <div>&ensp;</div>
+            <div>&ensp;</div>
+            <img src="./static/images/training-ana-densenet.png" class="interpolation-image" alt="Teaser Figure" width="1200" height="1000" />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <p class="content has-text-justified">
+            We visualize the average expected property gradient magnitudes of the hair color for a local example over the training process for both pre-trained and randomly initialized models.
+            Specifically, we display the average against the observed flips in the prediction during the hair color intervention.
+            <strong>Our analysis reveals two key insights:</strong>
+            </p>
+            <ul>
+              <li>
+                First, for all architectures, the pre-trained variants locally exhibit higher expected property gradient magnitudes compared to the randomly initialized versions. 
+                This observation is consistent with the number of times the networks' predictions flip during training. 
+                In general, we find that <strong>increased measured impact correlates with more flipped predictions (above left).</strong>
+              </li>
+              <li>
+                Our second key finding is illustrated in the visualization above right, which reveals that the impact of the hair color exhibits strong local fluctuations during the training for the <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1608.06993">DenseNets</a>.
+                In other words, the networks <strong>do not continuously learn to rely on the hair color property but instead locally "forget" it, even in later epochs.</strong>
+                This effect is particularly pronounced for the pre-trained model, whereas the randomly initialized version tends to show lower expected property gradient magnitudes.
+                We observe similar behavior for other architectures.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Analyzing a <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2103.00020">CLIP</a> Model with Real World Interventions</h2>
+            <p class="content has-text-justified">
+            In our final set of experiments, we investigate the widely used multimodal backbone <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2103.00020">CLIP</a> <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2010.11929">ViT-B/32</a> for zero-shot classification.
+            <strong>Our approach is model-agnostic</strong>, requiring only access to model outputs, here cosine similarities in the learned latent space.
+            As the property of interest, we select object orientation, which is a known bias, for example, <a target="_blank" rel="noopener noreferrer" href="https://jov.arvojournals.org/article.aspx?articleid=2776554">in ImageNet models</a>.
+            Additionally, we demonstrate a third type of interventional data and capture real-life interventional images.
+            Specifically, <strong>we record a rotation of three toy figures (elephant, giraffe, and stegosaurus) using a turntable.</strong>
+            </p>
+            <img src="./static/images/stego.png" class="interpolation-image" alt="Stegosaurus Rotation" width="1200" height="1200" />
+            <p class="content has-text-justified">
+            Note that in our experiments the behavior is remarkably consistent between text descriptors with similar standard deviations during the full interventions.
+            Further, <strong>all measured expected property gradient magnitudes are statistically significant (p &lt; 0.01)</strong>, i.e., the <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2103.00020">CLIP</a> model is influenced by object orientation.
+            While expected, our local interventional approach facilitates direct interpretations of the change in behavior.
+            </p>
+            <p class="content has-text-justified">
+            The figure below shows the highest average similarity for the correct class occurs when the toy animal is rotated sideways.
+            Periodical minima align with the front or back-facing orientations. 
+            In contrast, the highest similarities for the other classes appear close to the minimum of the ground truth, indicating lower confidence.
+            </p>
+            <img src="./static/images/clip-stego.png" class="interpolation-image" alt="Teaser Figure" width="1000" height="1000" />
+
+            <p class="content has-text-justified">
+            To further validate these results, we include the response to synthetic rotations of a 3D model around other axes as additional ablations (see below).
+            We confirm that uncommon, e.g., upside-down positions, lead to lower scores (we mark minima).
+            Hence, <strong>our approach provides actionable guidance to locally select an appropriate input orientation.</strong>
+            </p>
+            <img src="./static/images/clip-frog.png" class="interpolation-image" alt="Teaser Figure" width="1020" height="1000" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  <!-- Theoretical Background & Preliminaries -->
+
 
   <section class="section">
     <div class="container is-max-widescreen">
@@ -379,7 +493,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
               <li>The third level, counterfactual, deals with hypothetical scenarios, where researchers consider the potential outcome if an intervention had been made, given specific observations.</li>
               </ul>
             <p class="content has-text-justified">
-              Crucially, the <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">causal hierarchy theorem</a> states that the three levels are distinct, and the PCH almost never collapses in the general case.
+              Crucially, the <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">causal hierarchy theorem</a> states that <strong>the three levels are distinct, and the PCH almost never collapses in the general case.</strong>
               Hence, to answer questions of a certain PCH level, data from the corresponding level is needed (Corollary 1 in <a target="_blank" rel="noopener noreferrer" href="https://causalai.net/r60.pdf">here</a>).
             </p>
 

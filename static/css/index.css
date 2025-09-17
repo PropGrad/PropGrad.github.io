@@ -14,13 +14,13 @@ body {
 }
 
 ul {
-    width: 80%; /* Reduces width to half of the container */
+    width: 90%; /* Reduces width to half of the container */
     display: table;
     margin: 0px auto;
     text-align: left;
 }
 ol {
-    width: 80%; /* Reduces width to half of the container */
+    width: 90%; /* Reduces width to half of the container */
     display: table;
     margin: 0px auto;
     text-align: left;
