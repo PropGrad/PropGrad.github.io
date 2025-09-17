@@ -253,17 +253,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
             <p><strong>Important:</strong> We first include some results and highlights. You can find a overview for the theoretical foundation further down or simply open <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/2503.05424">our paper</a> &#128519;</p>
             <hr>
             <h2 class="title is-2 fullwidth-highlight">Selected Results and Visualizations</h2>
-        </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container is-max-widescreen">
-      <div class="columns is-centered has-text-centered">
-        <div class="column">
-          <div class="content">
             <h2 class="title is-3">Validation in a Cats versus Dogs Classification Task With Known Bias</h2>
             <p class="content has-text-justified">
               We validate our approach in a synthetic scenario with known biases.
@@ -304,6 +293,71 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     </div>
   </section>
 
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-3">Manual Interventions to Study Skin Lesion Classifiers</h2>
+            <p class="content has-text-justified">
+              In the domain of skin lesion classification, a known bias is the correlation between <a target="_blank" rel="noopener noreferrer" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5030195/">colorful patches</a> and the healthy nevus class.
+              We assess how strongly this property is learned by four different ImageNet pretrained architectures.
+              Then, we either fine-tune on biased skin lesion data (50% nevi with <a target="_blank" rel="noopener noreferrer" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5030195/">colorful patches</a>) or unbiased data (no patches) from the <a target="_blank" rel="noopener noreferrer" href="https://www.isic-archive.com/">ISIC archive</a>.
+              To demonstrate that <strong>our approach accommodates diverse sources of interventional data</strong>, we build on domain knowledge and intervene synthetically.
+              Specifically, we blend <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1909.13584">segmented colorful patches</a> into melanoma images.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-4">Visualized Average Behavior for ResNet18</h2>
+            <img src="./static/images/isic-explanation.png" class="interpolation-image" alt="Teaser Figure" width="1000" height="1000" />
+            </div>
+          </div>
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-4">Estimated Impact for Different Melanoma Classifiers Trained on Different Data Sources</h2>
+            <div>&ensp;</div>
+            <img src="./static/images/isic-table.png" class="interpolation-image" alt="Teaser Figure" width="1000" height="1000" />
+            </div>
+          </div>
+        </div>
+
+
+
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content">
+            <p class="content has-text-justified">
+              The mean expected property gradient magnitudes in the table above show that models trained on biased data are most impacted by colorful patch interventions, indicating they learn the statistical correlation between the patches and the nevus class. 
+              Furthermore, the variants with ImageNet weights show higher patch sensitivity than the unbiased skin lesion models. 
+              We hypothesize this is because learning color is beneficial for general-purpose pre-training, whereas the unbiased models learn to disregard patches and focus on the actual lesions.
+            </p>
+
+            <h2 class="title is-3">Quantitative Comparisons</h2>
+
+            <p class="content has-text-justified">
+              To  quantitatively compare our approach to local baselines, <strong>we propose a downstream task inspired by <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/abs/1806.07421">insertion/deletion tests</a>: predicting whether an intervention on a property will change the model's output.</strong>
+              This task directly assesses if a method can indicate locally biased behavior and allows for a quantitative comparison to local baselines, given that our approach does not produce saliency maps but rather estimates the impact of a property directly using property gradients.
+              To adapt saliency methods, we measure the mean squared difference of the explanation pre- and post-intervention.
+              For a fair comparison, we select the optimal threshold maximizing the accuracy for both the local baselines and our score.
+            </p>
+            <img src="./static/images/downstream-table.png" class="interpolation-image" alt="Downstream Task Performance" width="1400" height="1400" />
+            <p class="content has-text-justified">
+              Our results show that <strong>our approach outperforms all local baselines</strong> in both the synthetically biased cats versus dogs dataset and the realistic skin lesion task.
+              However, our aim is not to replace saliency methods, but rather to offer <strong>a complementary, interventional viewpoint for analyzing local behavior.</strong>
+              We demonstrate these capabilities with our analysis of model training and CLIP models.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container is-max-widescreen">
       <div class="columns is-centered">
@@ -315,12 +369,6 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
         </div>
         </div>
       </div>
-    </div>
-  </section>
-
-
-  <section class="section">
-    <div class="container is-max-widescreen">
       <div class="columns is-centered has-text-centered">
         <div class="column">
           <div class="content">
