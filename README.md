@@ -4,9 +4,9 @@ This is the repository that contains source code for the [Property Gradients web
 
 If you find our work useful please cite:
 ```
-@inproceedings{penzel2025towards,
+@inproceedings{penzel2025locally,
     author = {Niklas Penzel and Joachim Denzler},
-    title = {Towards Locally Explaining Prediction Behavior via Gradual Interventions and Measuring Property Gradients},
+    title = {Locally Explaining Prediction Behavior via Gradual Interventions and Measuring Property Gradients},
     year = {2025},
     doi = {10.48550/arXiv.2503.05424},
     arxiv = {https://arxiv.org/abs/2503.05424},
