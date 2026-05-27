@@ -4,13 +4,14 @@ This is the repository that contains source code for the [Property Gradients web
 
 If you find our work useful please cite:
 ```
-@inproceedings{penzel2025locally,
-    author = {Niklas Penzel and Joachim Denzler},
-    title = {Locally Explaining Prediction Behavior via Gradual Interventions and Measuring Property Gradients},
-    year = {2025},
-    doi = {10.48550/arXiv.2503.05424},
-    arxiv = {https://arxiv.org/abs/2503.05424},
-    note = {accepted at WACV 2026},
+@inproceedings{penzel2026locally,
+  author        = {Niklas Penzel and Joachim Denzler},
+  title         = {Locally Explaining Prediction Behavior via Gradual Interventions and Measuring Property Gradients},
+  booktitle     = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  month         = {March},
+  year          = {2026},
+  pages         = {7398-7408},
+  url           = {https://propgrad.github.io},
 }
 ```
 
